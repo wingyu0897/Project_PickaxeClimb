@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Control : MonoBehaviour
+public class ThrowControler : MonoBehaviour
 {
-	public static Control Instance;
+	public static ThrowControler Instance;
 
 	private Camera cam;
 
