@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowControler : MonoBehaviour
+public class ThrowController : MonoBehaviour
 {
-	public static ThrowControler Instance;
+	public static ThrowController Instance;
 
 	private Camera cam;
 
@@ -20,6 +20,7 @@ public class ThrowControler : MonoBehaviour
 	private Vector2	direction;
 	private Vector2	force;
 	private float distance;
+	private bool active;
 
 	private void Awake()
 	{
@@ -36,10 +37,26 @@ public class ThrowControler : MonoBehaviour
 	private void Start()
 	{
 		cam = Camera.main;
+		EnableControl(false);
+	}
+
+	public void EnableControl(bool enable)
+	{
+		if (enable)
+		{
+			active = true;
+			_throw.ActiveRigidbody();
+		}
+		else
+		{
+			active = false;
+		}
 	}
 
 	private void Update()
 	{
+		if (!active) return;
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			isDragging = true;

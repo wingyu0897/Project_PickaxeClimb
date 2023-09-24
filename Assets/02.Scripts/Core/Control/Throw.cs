@@ -16,6 +16,7 @@ public class Throw : MonoBehaviour
 	private void Awake()
 	{
 		rigid = GetComponent<Rigidbody2D>();
+		DesactiveRigidbody();
 	}
 
 	private void Update()
@@ -48,6 +49,8 @@ public class Throw : MonoBehaviour
 	public void ActiveRigidbody()
 	{
 		rigid.isKinematic = false;
+		canMove = false;
+		stopTime = 0;
 	}
 
 	public void DesactiveRigidbody()
