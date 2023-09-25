@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
 	public ThrowController throwContoller;
+
+	public UnityEvent OnClearGame;
 
 	private void Awake()
 	{
@@ -24,5 +27,11 @@ public class GameManager : MonoBehaviour
 	public void StartGame()
 	{
 		throwContoller.EnableControl(true);
+	}
+
+	public void ClearGame()
+	{
+		print("ClearGame");
+		OnClearGame?.Invoke();
 	}
 }
